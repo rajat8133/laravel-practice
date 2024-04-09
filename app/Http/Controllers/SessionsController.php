@@ -28,7 +28,7 @@ class SessionsController extends Controller
 
         session()->regenerate();
 
-        return redirect('/')->with('success', 'welcome Back');
+        return redirect('login')->with('success', 'welcome Back');
 
     }
 
@@ -36,7 +36,6 @@ class SessionsController extends Controller
     {
         auth()->logout();
 
-        return redirect('/')->with('success', 'Goodbye!');
-
+        return redirect('/')->with('success', 'Goodbye');
     }
 }
