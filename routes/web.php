@@ -35,8 +35,15 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/', [PostController::class, 'index'])->name('home');
 
-Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('register', [RegisterController::class, 'store'])->middleware('guest')->name('login.register');
+// Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+// Route::post('register', [RegisterController::class, 'store'])->middleware('guest')->name('login.register');
 
-Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
-Route::get('logout', [SessionsController::class, 'destroy']);
+// Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+// Route::get('logout', [SessionsController::class, 'destroy']);
+
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+
+Route::get('logout', [SessionsController::class, 'create'])->middleware('guest');
+Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');

@@ -20,15 +20,15 @@ class SessionsController extends Controller
 
         if (! auth()->attempt($attributes)) {
 
-            throw ValidationException::withMessages([
-                'email' => 'your provided credentials colud not be varified.',
-            ]);
+            session()->regenerate();
+
+            return redirect('/')->with('success', 'welcome Back');
 
         }
 
-        session()->regenerate();
-
-        return redirect('login')->with('success', 'welcome Back');
+        throw ValidationException::withMessages([
+            'email' => 'your provided credentials colud not be varified.',
+        ]);
 
     }
 
