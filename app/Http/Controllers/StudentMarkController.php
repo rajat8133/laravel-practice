@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Student\StoreStudentRequest;
-use App\Http\Requests\Student\UpdateStudentRequest;
-use App\Models\Student;
+use App\Http\Requests\StudentMark\StoreStudentMarkRequest;
+use App\Http\Requests\StudentMark\UpdateStudentMarkRequest;
+use App\Models\StudentMark;
 
-class StudentController extends Controller
+class StudentMarkController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Student::all();
+        return StudentMark::all();
     }
 
     /**
@@ -21,19 +21,19 @@ class StudentController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStudentRequest $request)
+    public function store(StoreStudentMarkRequest $request)
     {
         $request = $request->validated();
 
-        $UserStudents = Student::create($request);
+        $UserStudentMark = StudentMark::create($request);
 
-        return $UserStudents;
+        return $UserStudentMark;
 
         return redirect('/');
 
@@ -42,12 +42,9 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        $student = Student::with('subjects')->find($id);
-
-        return view('/', compact('student'));
-
+        //
     }
 
     /**
@@ -61,26 +58,25 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStudentRequest $request, Student $student)
+    public function update(UpdateStudentMarkRequest $request, Studentmark $studentmark)
     {
-        $student->fill($request->validated());
+        $studentmark->fill($request->validated());
 
-        $student->update();
+        $studentmark->update();
 
-        return $student;
+        return $studentmark;
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(studentmark $studentmark)
     {
-        $student->delete();
+        $studentmark->delete();
 
         return response([
-            'message' => 'delete successfully',
+            'message' => 'delate successfully',
         ]);
-
     }
 }

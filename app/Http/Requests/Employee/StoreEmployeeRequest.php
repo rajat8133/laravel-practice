@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Student;
+namespace App\Http\Requests\Employee;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreStudentRequest extends FormRequest
+class StoreEmployeeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,33 +30,15 @@ class StoreStudentRequest extends FormRequest
                 'required',
                 'string',
             ],
-            'gender' => [
+            'department' => [
                 'required',
                 'string',
+            ],
+            'age' => [
+                'required',
             ],
             'email' => [
                 'required',
-                'string',
-            ],
-            'date_of_birth' => [
-                'required',
-                'date',
-            ],
-            'phone_number' => [
-                'required',
-                'integer',
-            ],
-            'address' => [
-                'required',
-                'string',
-            ],
-            'postal_code' => [
-                'required',
-                'string',
-            ],
-            'country' => [
-                'required',
-                'string',
             ],
 
         ];

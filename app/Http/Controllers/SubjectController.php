@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Student\StoreStudentRequest;
-use App\Http\Requests\Student\UpdateStudentRequest;
-use App\Models\Student;
+use App\Http\Requests\Subject\StoreSubjectRequest;
+use App\Http\Requests\Subject\UpdateSubjectRequest;
+use App\Models\Subject;
 
-class StudentController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Student::all();
+        return Subject::all();
     }
 
     /**
@@ -21,19 +21,19 @@ class StudentController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreStudentRequest $request)
+    public function store(StoreSubjectRequest $reguest)
     {
-        $request = $request->validated();
+        $reguest = $reguest->validated();
 
-        $UserStudents = Student::create($request);
+        $UserSubject = Subject::create($reguest);
 
-        return $UserStudents;
+        return $UserSubject;
 
         return redirect('/');
 
@@ -42,12 +42,9 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show(string $id)
     {
-        $student = Student::with('subjects')->find($id);
-
-        return view('/', compact('student'));
-
+        //
     }
 
     /**
@@ -61,22 +58,23 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateStudentRequest $request, Student $student)
+    public function update(UpdateSubjectRequest $request, Subject $subject)
     {
-        $student->fill($request->validated());
 
-        $student->update();
+        $subject->fill($request->validated());
 
-        return $student;
+        $subject->update();
+
+        return $subject;
 
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(subject $subject)
     {
-        $student->delete();
+        $subject->delete();
 
         return response([
             'message' => 'delete successfully',

@@ -38,10 +38,6 @@ class UpdateStudentRequest extends FormRequest
                 'required',
                 'string',
             ],
-            'marks' => [
-                'required',
-                'integer',
-            ],
             'date_of_birth' => [
                 'required',
                 'date',

@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentMarkController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +24,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource('students', StudentController::class)->only(['store', 'update', 'destroy', 'index']);
 Route::apiResource('students', StudentController::class)->only(['update']);
+
+Route::apiResource('subjects', SubjectController::class)->only(['store', 'update', 'destroy', 'index']);
+
+Route::apiResource('studentmarks', StudentMarkController::class)->only(['store', 'index', 'update']);
+//Route::apiResource('studentmarks', StudentMarkController::class)->only(['update']);
+Route::apiResource('studentmarks', StudentMarkController::class)->only(['destroy']);
+
+Route::apiResource('employee', EmployeeController::class)->only(['store', 'update', 'destroy', 'index']);
