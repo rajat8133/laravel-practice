@@ -16,7 +16,6 @@ class EmployeeController extends Controller
     {
         $employees = Employee::all();
 
-        return view('employees.index', compact('employees'));
     }
 
     /**
@@ -44,7 +43,7 @@ class EmployeeController extends Controller
             ]);
         }
 
-        return redirect()->route('employees.index');
+        return redirect('/');
     }
 
     /**
@@ -82,7 +81,7 @@ class EmployeeController extends Controller
             ]);
         }
 
-        return redirect()->route('employees.index');
+        return redirect('/');
 
     }
 
