@@ -6,24 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class PhoneNumber extends Model
+class Customer extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory , SoftDeletes;
 
     protected $fillable = [
-
-        'employee_id',
-        'number',
+        'first_name',
+        'last_name',
+        'address',
+        'email',
 
     ];
 
     protected $casts = [
-
         'id' => 'integer',
-        'employee_id' => 'integer',
-        'number' => 'integer',
+        'first_name' => 'string',
+        'last_name' => 'string',
+        'address' => 'string',
+        'email' => 'string',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+
     ];
 
     protected $hidden = [
@@ -31,9 +34,4 @@ class PhoneNumber extends Model
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
-
-    public function employee()
-    {
-        return $this->belongsTo(Employee::class);
-    }
 }

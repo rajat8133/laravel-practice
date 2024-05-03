@@ -31,15 +31,19 @@ class EmployeeController extends Controller
      */
     public function store(StoreEmployeeRequest $request)
     {
-        $request = $request->validated();
+        $request->fill($request->validated());
 
         $employee = Employee::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'department' => $request->department,
+            'age' => $request->age,
             'email' => $request->email,
         ]);
 
-        foreach ($request->phone_numbers as $phoneNumber) {
+        foreach ($request->phone_numbers as $number) {
             $employee->phoneNumbers()->create([
-                'phone_number' => $phoneNumber,
+                'number' => $number,
             ]);
         }
 
@@ -70,14 +74,18 @@ class EmployeeController extends Controller
         $employee->fill($request->validated());
 
         $employee->update([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'department' => $request->department,
+            'age' => $request->age,
             'email' => $request->email,
         ]);
 
         $employee->phoneNumbers()->delete();
 
-        foreach ($request->phone_numbers as $phoneNumber) {
+        foreach ($request->phone_numbers as $number) {
             $employee->phoneNumbers()->create([
-                'phone_number' => $phoneNumber,
+                'number' => $number,
             ]);
         }
 

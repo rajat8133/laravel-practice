@@ -21,7 +21,7 @@ class UpdateEmployeeRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $return = [
             'first_name' => [
                 'required',
                 'string',
@@ -41,5 +41,17 @@ class UpdateEmployeeRequest extends FormRequest
                 'required',
             ],
         ];
+        $numbers = 'phone_numbers.*.';
+
+        $returnNumbers = [
+
+            $numbers.'number' => [
+                'required',
+                'string',
+            ],
+        ];
+
+        return collect($return)->merge(collect($returnNumbers))->toArray();
+
     }
 }
