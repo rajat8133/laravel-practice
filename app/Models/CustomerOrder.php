@@ -4,28 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
+class CustomerOrder extends Model
 {
     use HasFactory , SoftDeletes;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        // 'address',
-        // 'email',
+        'customer_id',
+        'order_date',
+        'order_details',
+        'tracking_number',
     ];
 
     protected $casts = [
         'id' => 'integer',
-        'first_name' => 'string',
-        'last_name' => 'string',
-        'address' => 'string',
-        'email' => 'string',
+        'customer_id' => 'integer',
+        'order_date' => 'date',
+        'oder_details' => 'string',
+        'tracking_number' => 'string',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
-
     ];
 
     protected $hidden = [
@@ -34,8 +34,8 @@ class Customer extends Model
         'deleted_at' => 'datetime',
     ];
 
-    public function CustomerOrder()
+    public function customer(): BelongsTo
     {
-        return $this->hasMany(CustomerOrder::class);
+        return $this->belongsTo(Customer::class);
     }
 }

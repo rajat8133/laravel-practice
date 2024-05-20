@@ -21,14 +21,16 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $return = [
             'first_name' => [
                 'required',
                 'string',
+                'max:255',
             ],
             'last_name' => [
                 'required',
                 'string',
+                'max:255',
             ],
             'address' => [
                 'required',
@@ -36,8 +38,27 @@ class UpdateCustomerRequest extends FormRequest
             ],
             'email' => [
                 'required',
+                'email',
+            ],
+        ];
+        $orders = 'customer_orders.*.';
+
+        $returnOrders = [
+            $orders.'order_date' => [
+                'required',
+                'date',
+            ],
+            $orders.'order_details' => [
+                'required',
+                'string',
+            ],
+            $orders.'tracking_number' => [
+                'required',
                 'string',
             ],
         ];
+
+        return collect($return)->merge(collect($returnOrders))->toArray();
+
     }
 }

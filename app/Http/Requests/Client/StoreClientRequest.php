@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Customer;
+namespace App\Http\Requests\Client;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomerRequest extends FormRequest
+class StoreClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,13 +21,13 @@ class StoreCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-        $return = [
-            'first_name' => [
+        return [
+            'client_name' => [
                 'required',
                 'string',
                 'max:255',
             ],
-            'last_name' => [
+            'Contact' => [
                 'required',
                 'string',
                 'max:255',
@@ -35,30 +35,22 @@ class StoreCustomerRequest extends FormRequest
             'address' => [
                 'required',
                 'string',
-            ],
-            'email' => [
-                'required',
-                'email',
                 'max:255',
             ],
-        ];
-        $orders = 'customer_orders.*.';
-        $returnOrders = [
-            $orders.'order_date' => [
+            'client_type' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'client_since' => [
                 'required',
                 'date',
             ],
-            $orders.'order_details' => [
+            'client_status' => [
                 'required',
                 'string',
-            ],
-            $orders.'tracking_number' => [
-                'required',
-                'string',
+                'max:255',
             ],
         ];
-
-        return collect($return)->merge(collect($returnOrders))->toArray();
-
     }
 }

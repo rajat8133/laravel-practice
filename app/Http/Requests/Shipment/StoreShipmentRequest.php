@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Customer;
+namespace App\Http\Requests\Shipment;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomerRequest extends FormRequest
+class StoreShipmentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,44 +21,45 @@ class StoreCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-        $return = [
-            'first_name' => [
+        return [
+            'tracking_number' => [
                 'required',
                 'string',
                 'max:255',
             ],
-            'last_name' => [
+
+            'shipment_status' => [
                 'required',
                 'string',
                 'max:255',
+
             ],
-            'address' => [
+
+            'carrier_name' => [
                 'required',
                 'string',
-            ],
-            'email' => [
-                'required',
-                'email',
                 'max:255',
+
             ],
-        ];
-        $orders = 'customer_orders.*.';
-        $returnOrders = [
-            $orders.'order_date' => [
+
+            'destination' => [
+                'required',
+                'string',
+                'max:255',
+
+            ],
+
+            'order_number' => [
+                'required',
+                'string',
+                'max:255',
+
+            ],
+
+            'shipment_date' => [
                 'required',
                 'date',
             ],
-            $orders.'order_details' => [
-                'required',
-                'string',
-            ],
-            $orders.'tracking_number' => [
-                'required',
-                'string',
-            ],
         ];
-
-        return collect($return)->merge(collect($returnOrders))->toArray();
-
     }
 }

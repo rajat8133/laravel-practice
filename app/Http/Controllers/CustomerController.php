@@ -30,16 +30,12 @@ class CustomerController extends Controller
     public function store(StoreCustomerRequest $request)
     {
 
-        $validatedData = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email',
-        ]);
-
         $customer = new Customer();
-        $customer->fill($validatedData);
+        $customer->fill($request->only('first_name', 'last_name'));
+        $customer->address = $request->address;
+        $customer->email = $request->email;
         $customer->save();
+        dd($customer->toArray());
 
         return $customer;
 
@@ -69,6 +65,10 @@ class CustomerController extends Controller
     {
         $customer->fill($request->all());
         $customer->update();
+
+        // if ($request->email)
+
+        //Raise email to user
 
         return $customer;
     }

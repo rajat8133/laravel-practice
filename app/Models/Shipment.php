@@ -6,23 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
+class Shipment extends Model
 {
     use HasFactory , SoftDeletes;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        // 'address',
-        // 'email',
+        'tracking_number',
+        'shipment_status',
+        'carrier_name',
+        'destination',
+        'order_number',
+        'shipment_date',
     ];
 
     protected $casts = [
         'id' => 'integer',
-        'first_name' => 'string',
-        'last_name' => 'string',
-        'address' => 'string',
-        'email' => 'string',
+        'tracking_number' => 'string',
+        'shipment_status' => 'string',
+        'carrier_name' => 'string',
+        'destination' => 'string',
+        'order_number' => 'string',
+        'shipment_date' => 'string',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
 
@@ -33,9 +37,4 @@ class Customer extends Model
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
-
-    public function CustomerOrder()
-    {
-        return $this->hasMany(CustomerOrder::class);
-    }
 }

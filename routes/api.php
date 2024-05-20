@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentMarkController;
 use App\Http\Controllers\SubjectController;
@@ -35,3 +37,9 @@ Route::apiResource('studentmarks', StudentMarkController::class)->only(['destroy
 Route::apiResource('employee', EmployeeController::class)->only(['store', 'update', 'destroy', 'index']);
 
 Route::apiResource('customers', CustomerController::class)->only(['store', 'update', 'destroy', 'index']);
+
+Route::apiResource('shipments', ShipmentController::class)->only(['store', 'update', 'destroy', 'index']);
+//Route::apiResource('shipments', ShipmentController::class)->only(['destroy']);
+
+Route::apiResource('clients', ClientController::class)->only(['store', 'update', 'destroy', 'index']);
+Route::apiResource('clients', ClientController::class)->only(['store', 'index']);
