@@ -27,7 +27,7 @@ class StoreClientRequest extends FormRequest
                 'string',
                 'max:255',
             ],
-            'Contact' => [
+            'contact' => [
                 'required',
                 'string',
                 'max:255',

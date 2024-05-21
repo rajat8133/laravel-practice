@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('client_name')->nullable();
-            $table->string('Contact')->nullable();
+            $table->string('contact')->nullable();
             $table->string('address')->nullable();
             $table->string('client_type')->nullable();
             $table->date('client_since')->nullable();

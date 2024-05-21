@@ -13,7 +13,7 @@ class Client extends Model
     protected $fillable = [
 
         'client_name',
-        'Contact',
+        'contact',
         'address',
         'client_type',
         'client_since',
@@ -24,7 +24,7 @@ class Client extends Model
     protected $casts = [
         'id' => 'integer',
         'client_name' => 'string',
-        'Contact' => 'string',
+        'contact' => 'string',
         'address' => 'string',
         'client_type' => 'string',
         'client_since' => 'date',

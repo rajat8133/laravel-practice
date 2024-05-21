@@ -30,11 +30,11 @@ class ClientController extends Controller
     public function store(StoreClientRequest $request)
     {
 
-        // 1  ===== Direct Value Assign====
+        // 1   ====== Direct Value Assign=====
 
         // $client = new Client();
         // $client->client_name = 'Rajat';
-        // $client->Contact = '784459615';
+        // $client->contact = '784459615';
         // $client->address = 'vpo kangra';
         // $client->client_type = ' retails';
         // $client->client_since = '02/05/2024';
@@ -43,11 +43,11 @@ class ClientController extends Controller
 
         // return $client;
 
-        // 2 === Create  Mathod ===
+        // 2 ===== Create  Mathod =====
 
-        $client = Client::Create([
+        $client = Client::create([
             'client_name' => $request->client_name,
-            'Contact' => $request->Contact,
+            'contact' => $request->contact,
             'address' => $request->address,
             'client_type' => $request->client_type,
             'client_since' => $request->client_since,
@@ -56,15 +56,15 @@ class ClientController extends Controller
 
         return $client;
 
-        // 3.  === fill mathod ====
+        // 3  ===== fill mathod ======
 
-        // $validateData = $store->validate([
-        //     'client_name' => 'required',
-        //     'Contact' => 'required',
-        //     'address' => 'required',
-        //     'client_type' => 'required',
-        //     'client_since' => 'required',
-        //     'client_status' => 'required',
+        // $validateData = $request->validated([
+        //     // 'client_name' => 'required',
+        //     // 'contact' => 'required',
+        //     // 'address' => 'required',
+        //     // 'client_type' => 'required',
+        //     // 'client_since' => 'required',
+        //     // 'client_status' => 'required',
         // ]);
 
         // $client = new Client();
