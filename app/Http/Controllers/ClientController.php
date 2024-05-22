@@ -45,33 +45,26 @@ class ClientController extends Controller
 
         // 2 ===== Create  Mathod =====
 
-        $client = Client::create([
-            'client_name' => $request->client_name,
-            'contact' => $request->contact,
-            'address' => $request->address,
-            'client_type' => $request->client_type,
-            'client_since' => $request->client_since,
-            'client_status' => $request->client_status,
-        ]);
+        // $client = Client::create([
+        //     'client_name' => $request->client_name,
+        //     'contact' => $request->contact,
+        //     'address' => $request->address,
+        //     'client_type' => $request->client_type,
+        //     'client_since' => $request->client_since,
+        //     'client_status' => $request->client_status,
+        // ]);
 
-        return $client;
+        // return $client;
 
         // 3  ===== fill mathod ======
 
-        // $validateData = $request->validated([
-        //     // 'client_name' => 'required',
-        //     // 'contact' => 'required',
-        //     // 'address' => 'required',
-        //     // 'client_type' => 'required',
-        //     // 'client_since' => 'required',
-        //     // 'client_status' => 'required',
-        // ]);
+        $validateData = $request->validated([
+        ]);
+        $client = new Client();
+        $client->fill($validateData);
+        $client->save();
 
-        // $client = new Client();
-        // $client->fill($validateData);
-        // $client->save();
-
-        // return $client;
+        return $client;
 
         return redirect('/');
 
