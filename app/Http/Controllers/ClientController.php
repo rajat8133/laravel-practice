@@ -92,17 +92,24 @@ class ClientController extends Controller
      */
     public function update(UpdateClientRequest $request, $id)
     {
-        $client = Client::find($id);
 
-        $validateData = $request->validated();
+        $client = Client::findOrFail($id);
 
-        $client->fill($validateData);
+        $client->update($request->all());
 
-        $client->update();
+        return response($client);
 
-        return $client;
+        // $client = Client::find($id);
 
-        return redirect('/')->with('status', 'data Update Successfully');
+        // $validateData = $request->validated();
+
+        // $client->fill($validateData);
+
+        // $client->update();
+
+        // return $client;
+
+        // return redirect('/')->with('status', 'data Update Successfully');
 
     }
 
