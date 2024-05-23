@@ -59,6 +59,7 @@ class ClientController extends Controller
         // 3  ===== fill mathod ======
 
         $validateData = $request->validated([
+
         ]);
         $client = new Client();
         $client->fill($validateData);
@@ -89,8 +90,10 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClientRequest $request, Client $client)
+    public function update(UpdateClientRequest $request, $id)
     {
+        $client = Client::find($id);
+
         $validateData = $request->validated();
 
         $client->fill($validateData);
@@ -99,7 +102,7 @@ class ClientController extends Controller
 
         return $client;
 
-        return redirect('/');
+        return redirect('/')->with('status', 'data Update Successfully');
 
     }
 

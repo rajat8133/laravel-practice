@@ -23,31 +23,31 @@ class UpdateClientRequest extends FormRequest
     {
         return [
             'client_name' => [
-                'required',
+                //  'required',
                 'string',
                 'max:255',
             ],
             'contact' => [
-                'required',
+                //  'required',
                 'string',
                 'max:255',
             ],
             'address' => [
-                'required',
+                //  'required',
                 'string',
                 'max:255',
             ],
             'client_type' => [
-                'required',
+                //  'required',
                 'string',
                 'max:255',
             ],
             'client_since' => [
-                'required',
+                // 'required',
                 'date',
             ],
             'client_status' => [
-                'required',
+                // 'required',
                 'string',
                 'max:255',
             ],
