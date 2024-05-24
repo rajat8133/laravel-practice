@@ -7,6 +7,7 @@ use App\Http\Controllers\ShipmentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentMarkController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\UserDataController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -43,3 +44,5 @@ Route::apiResource('shipments', ShipmentController::class)->only(['store', 'upda
 
 Route::apiResource('clients', ClientController::class)->only(['store', 'update', 'destroy', 'index']);
 Route::apiResource('clients', ClientController::class)->only(['store', 'index']);
+
+Route::apiResource('usersdata', UserDataController::class)->only(['index', 'store']);

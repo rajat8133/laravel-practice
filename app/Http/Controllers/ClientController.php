@@ -90,7 +90,7 @@ class ClientController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClientRequest $request, $id)
+    public function update(UpdateClientRequest $request, int $id)
     {
 
         $client = Client::findOrFail($id);
