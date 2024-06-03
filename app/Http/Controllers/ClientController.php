@@ -27,7 +27,7 @@ class ClientController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClientRequest $request)
+    public function store(storeClientRequest $request)
     {
 
         // 1   ====== Direct Value Assign=====

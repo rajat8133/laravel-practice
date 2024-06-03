@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserData\storeUserDataRequest;
+use App\Http\Requests\UserData\StoreUserDataRequest;
+use App\Http\Requests\UserData\UpdateUserDataRequest;
 use App\Models\UserData;
-use Illuminate\Http\Request;
 
 class UserDataController extends Controller
 {
@@ -27,7 +27,7 @@ class UserDataController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(storeUserDataRequest $request)
+    public function store(StoreUserDataRequest $request)
     {
 
         $validateData = $request->validated([
@@ -65,16 +65,26 @@ class UserDataController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateUserDataRequest $request, int $id)
     {
-        //
+        $userdata = UserData::findOrFail($id);
+
+        $userdata->update($request->all());
+
+        return response($userdata);
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(UserData $userData)
     {
-        //
+        $userData->delete();
+
+        return response([
+            'message' => 'delete successfully!',
+        ]);
+
     }
 }

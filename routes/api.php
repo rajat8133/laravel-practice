@@ -45,4 +45,4 @@ Route::apiResource('shipments', ShipmentController::class)->only(['store', 'upda
 Route::apiResource('clients', ClientController::class)->only(['store', 'update', 'destroy', 'index']);
 Route::apiResource('clients', ClientController::class)->only(['store', 'index']);
 
-Route::apiResource('usersdata', UserDataController::class)->only(['index', 'store']);
+Route::apiResource('usersdata', UserDataController::class)->only(['index', 'store', 'update', 'destroy']);

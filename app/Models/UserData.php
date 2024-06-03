@@ -23,6 +23,7 @@ class UserData extends Model
     protected $casts = [
         'id' => 'integer',
         'user_name' => 'string',
+        'first_name' => 'string',
         'last_name' => 'string',
         'phone_number' => 'string',
         'last_login' => 'date',
